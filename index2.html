@@ -1,0 +1,152 @@
+
+<html>
+<head>
+<title>
+</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<style type="text/css">
+
+body {
+font-family: arial, helvetica;
+}
+
+#content {
+	width:1060;
+	margin:0px auto; /* Right and left margin widths set to "auto" */
+	padding:20px;
+	border:1px dashed #333;
+   	background-color:#eee;
+}
+
+p {
+	padding:0px;
+	margin:3px;
+}
+
+p.name {
+	font-size:120%;
+	font-weight:bold;
+}
+
+p.contact {
+	margin-top:20px;
+	font-size:90%;
+	font-style:oblique;
+}
+
+div.leftimage {
+	float:left;
+	border: 0px solid #f00;
+	height: 352;
+	width: 352;
+	padding:0px;
+	margin:0px;
+}
+
+div.rightimage {
+	float:left;
+	border: 0px solid #0f0;
+	height: 352;
+	width: 352;
+	padding:0px;
+	margin:0px;
+}
+
+div.leftimage img {
+	margin:1px;
+}
+
+div.rightimage img {
+	margin:1px;
+}
+
+div.description {
+	border:1px dashed #333;
+	height: 704;
+	text-align:center;
+}
+
+</style>
+
+
+<script type="text/javascript">
+<!--
+
+(function($){
+	
+	$.fn.randomImage = function()
+	{
+			var imageCount = 5;
+			var imageNames = [ ];
+			while (imageCount>0) {
+				imageNames.push((imageCount < 10 ? "0" : "") + imageCount + ".jpg");
+				imageCount--;
+			};
+			return this.each(function() {
+				var imageNamesSize = imageNames.length;
+				var randomNumber = Math.random();
+				var lotteryNumber = Math.floor(randomNumber*imageNamesSize);
+				var winnerImage = imageNames[lotteryNumber];
+				var fullPath = 'images/' + winnerImage;
+				$(this).attr( {
+					src: fullPath,
+					alt: winnerImage
+				});
+				imageNames.splice(lotteryNumber, 1);
+				
+			});	
+			
+	};
+	
+})(jQuery);
+
+
+
+$(document).ready(function() {
+
+$('.shuffle').randomImage();
+
+});
+
+-->
+
+</script>
+
+
+<div id="content">
+
+<div class="leftimage">
+<img class="shuffle" src="" alt=""/>
+</div>
+<div class="leftimage">
+<img class="shuffle" src="" alt=""/>
+</div>
+<div class="rightimage">
+<img class="shuffle" src="" alt=""/>
+</div>
+<div class="leftimage">
+<img class="shuffle" src="" alt=""/>
+</div>
+<div class="leftimage">
+<img class="shuffle" src="" alt=""/>
+</div>
+
+
+<div class="description">
+<p class="name">Mart Oruaas<p/>
+<p class="profile">Teen pilti / Pretty pictures<p/>
+<p class="contact">fazz &auml;t pobox punkt com<p/>
+</div>
+
+</div>
+
+</body>
+
+</html>
+
