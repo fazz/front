@@ -106,13 +106,22 @@ div.description {
 	
 })(jQuery);
 
+$('#link1').click(function() {
+		$('#content2').show();
+});
 
+$('#link2').click(function() {
+		$('#content2').hide();
+});
 
 $(document).ready(function() {
 
 $('.shuffle').randomImage();
 
+$('#content2').hide();
+
 });
+
 
 -->
 
@@ -120,6 +129,8 @@ $('.shuffle').randomImage();
 
 
 <div id="content">
+
+<div id="thumbs">
 
 <div class="leftimage">
 <img class="shuffle" src="" alt=""/>
@@ -139,12 +150,20 @@ $('.shuffle').randomImage();
 
 
 <div class="description">
-<p class="name">Mart Oruaas<p/>
-<p class="profile">Teen pilti / Pretty pictures<p/>
-<p class="contact">fazz &auml;t pobox punkt com<p/>
+<p class="name">Mart Oruaas</p>
+<p class="profile">Teen pilti / Pretty pictures</p>
+<p class="contact">fazz &auml;t pobox punkt com</p>
+<a href="#" id="link1"/>link1</a>
+<a href="#" id="link1"/>link2</a>
 </div>
 
+</div> <!-- thumbs -->
+
+<div id="content2">
+blaah
 </div>
+
+</div> <!-- content -->
 
 </body>
 
