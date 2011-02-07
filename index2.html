@@ -24,6 +24,12 @@ font-family: arial, helvetica;
    	background-color:#eee;
 }
 
+.imagestrip {
+	white-space: nowrap;
+	overflow: auto;
+	overflow-y: hidden;
+}
+
 p {
 	padding:0px;
 	margin:3px;
@@ -106,19 +112,26 @@ div.description {
 	
 })(jQuery);
 
-$('#link1').click(function() {
-		$('#content2').show();
-});
+$(window).bind('hashchange', function () {
+	var pages = $('div.pages');
+	pages.hide();
 
-$('#link2').click(function() {
-		$('#content2').hide();
+	var hash = window.location.hash || '#main';
+	if (hash == '#portraits') {
+		$('#portraits').show();
+	} else if (hash == '#otherportraits') {
+		$('#otherportraits').show();
+	} else {
+		$('#thumbs').show();
+	};
 });
+			    
 
 $(document).ready(function() {
 
 $('.shuffle').randomImage();
 
-$('#content2').hide();
+$(window).trigger("hashchange");
 
 });
 
@@ -127,10 +140,9 @@ $('#content2').hide();
 
 </script>
 
-
 <div id="content">
 
-<div id="thumbs">
+<div id="thumbs" class="pages">
 
 <div class="leftimage">
 <img class="shuffle" src="" alt=""/>
@@ -153,15 +165,29 @@ $('#content2').hide();
 <p class="name">Mart Oruaas</p>
 <p class="profile">Teen pilti / Pretty pictures</p>
 <p class="contact">fazz &auml;t pobox punkt com</p>
-<a href="#" id="link1"/>link1</a>
-<a href="#" id="link1"/>link2</a>
+<a href="#portraits" id="link1">link1</a>
+<a href="#2" id="link2">link2</a>
 </div>
 
 </div> <!-- thumbs -->
 
-<div id="content2">
-blaah
+<div id="portraits" class="pages">
+<div id="menu">
+<a href="#portraits">Portreed</a>|<a href="#otherportraits">Teised portreed</a>|<a href="#main">Pea</a>
 </div>
+<div id="portraitimages" class="imagestrip">
+<img src="images/01.jpg"/>&nbsp;<img src="images/02.jpg"/>&nbsp;<img src="images/03.jpg"/>&nbsp;<img src="images/04.jpg"/>&nbsp;<img src="images/05.jpg"/>
+</div>
+</div> <!-- portraits -->
+
+<div id="otherportraits" class="pages">
+<div id="menu">
+<a href="#portraits">Portreed</a>|<a href="#otherportraits">Teised portreed</a>|<a href="#main">Pea</a>
+</div>
+<div id="otherportraitimages" class="imagestrip">
+<img src="images/05.jpg"/>&nbsp;<img src="images/02.jpg"/>&nbsp;<img src="images/03.jpg"/>&nbsp;<img src="images/04.jpg"/>&nbsp;<img src="images/05.jpg"/>
+</div>
+</div> <!-- portraits -->
 
 </div> <!-- content -->
 
