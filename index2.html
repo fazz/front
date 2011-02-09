@@ -24,6 +24,10 @@ font-family: arial, helvetica;
    	background-color:#eee;
 }
 
+.menu {
+	text-align: right;
+}
+
 #thumbs {
 	display: table;
 	border-collapse: collapse;
@@ -122,11 +126,15 @@ $(window).bind('hashchange', function () {
 
 	var hash = window.location.hash || '#main';
 	if (hash == '#portraits') {
-		$('#portraits').show();
+		$('#imagestrips').show('');
+		$('#portraits').show('fast');
+		$('#otherportraits').hide();
 	} else if (hash == '#otherportraits') {
-		$('#otherportraits').show();
+		$('#imagestrips').show('');
+		$('#otherportraits').show('fast');
+		$('#portraits').hide();
 	} else {
-		$('#thumbs').show();
+		$('#thumbs').show('fast');
 	};
 });
 			    
@@ -182,21 +190,18 @@ $(window).trigger("hashchange");
 
 </div> <!-- thumbs -->
 
-<div id="portraits" class="pages">
-<div id="menu">
-<a href="#portraits">Portreed</a>|<a href="#otherportraits">Teised portreed</a>|<a href="#main">Pea</a>
-</div>
-<div id="portraitimages" class="imagestrip">
+<div id="imagestrips" class="pages">
+<div id="portraits" class="imagestrip">
 <img src="images/01.jpg"/>&nbsp;<img src="images/02.jpg"/>&nbsp;<img src="images/03.jpg"/>&nbsp;<img src="images/04.jpg"/>&nbsp;<img src="images/05.jpg"/>
 </div>
-</div> <!-- portraits -->
-
-<div id="otherportraits" class="pages">
-<div id="menu">
+<div id="otherportraits" class="imagestrip">
+<img src="images/05.jpg"/>&nbsp;<img src="images/02.jpg"/>&nbsp;<img src="images/03.jpg"/>&nbsp;<img src="images/04.jpg"/>&nbsp;<img src="images/05.jpg"/>
+</div>
+<div class="menu">
 <a href="#portraits">Portreed</a>|<a href="#otherportraits">Teised portreed</a>|<a href="#main">Pea</a>
 </div>
-<div id="otherportraitimages" class="imagestrip">
-<img src="images/05.jpg"/>&nbsp;<img src="images/02.jpg"/>&nbsp;<img src="images/03.jpg"/>&nbsp;<img src="images/04.jpg"/>&nbsp;<img src="images/05.jpg"/>
+<div class="copyright">
+Copyright
 </div>
 </div> <!-- portraits -->
 
