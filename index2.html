@@ -24,6 +24,21 @@ font-family: arial, helvetica;
    	background-color:#eee;
 }
 
+#thumbs {
+	display: table;
+	border-collapse: collapse;
+}
+
+#upperrow {
+	display: table-row;
+	border-collapse: collapse;
+}
+
+#lowerrow {
+	display: table-row;
+	border-collapse: collapse;
+}
+
 .imagestrip {
 	white-space: nowrap;
 	overflow: auto;
@@ -41,13 +56,13 @@ p.name {
 }
 
 p.contact {
-	margin-top:20px;
+	xmargin-top:20px;
 	font-size:90%;
 	font-style:oblique;
 }
 
-div.leftimage {
-	float:left;
+div.thumb {
+	display: table-cell;
 	border: 0px solid #f00;
 	height: 352;
 	width: 352;
@@ -55,26 +70,15 @@ div.leftimage {
 	margin:0px;
 }
 
-div.rightimage {
-	float:left;
-	border: 0px solid #0f0;
-	height: 352;
-	width: 352;
-	padding:0px;
+div.thumb img {
 	margin:0px;
 }
 
-div.leftimage img {
-	margin:1px;
-}
-
-div.rightimage img {
-	margin:1px;
-}
-
 div.description {
+	display:table-cell;
+	vertical-align:top;
 	border:1px dashed #333;
-	height: 704;
+	margin:0px;
 	text-align:center;
 }
 
@@ -143,31 +147,38 @@ $(window).trigger("hashchange");
 <div id="content">
 
 <div id="thumbs" class="pages">
+	<div id="upperrow">
+		<div class="thumb">
+			<img class="shuffle" src="" alt=""/>
+		</div>
+		<div class="thumb">
+			<img class="shuffle" src="" alt=""/>
+		</div>
+		<div class="rightimage">
+			<img class="shuffle" src="" alt=""/>
+		</div>
+	</div> <!-- upperow -->
 
-<div class="leftimage">
-<img class="shuffle" src="" alt=""/>
-</div>
-<div class="leftimage">
-<img class="shuffle" src="" alt=""/>
-</div>
-<div class="rightimage">
-<img class="shuffle" src="" alt=""/>
-</div>
-<div class="leftimage">
-<img class="shuffle" src="" alt=""/>
-</div>
-<div class="leftimage">
-<img class="shuffle" src="" alt=""/>
-</div>
+	<div id="lowerrow">
+		<div class="thumb">
+			<img class="shuffle" src="" alt=""/>
+		</div>
+		<div class="thumb">
+			<img class="shuffle" src="" alt=""/>
+		</div>
 
-
-<div class="description">
+		<div class="description">
+<p class="name">Mart Oruaas</p>
+<p class="name">Mart Oruaas</p>
+<p class="name">Mart Oruaas</p>
 <p class="name">Mart Oruaas</p>
 <p class="profile">Teen pilti / Pretty pictures</p>
 <p class="contact">fazz &auml;t pobox punkt com</p>
 <a href="#portraits" id="link1">link1</a>
 <a href="#2" id="link2">link2</a>
-</div>
+		</div>
+
+	</div> <!-- lowerrow -->
 
 </div> <!-- thumbs -->
 
