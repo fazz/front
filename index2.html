@@ -13,7 +13,7 @@
 <style type="text/css">
 
 body {
-font-family: arial, helvetica;
+font-family: tahoma, verdana, georgia;
 }
 
 #content {
@@ -24,9 +24,15 @@ font-family: arial, helvetica;
    	background-color:#eee;
 }
 
-.menu {
+div.menu {
+	margin-top: 10px;
 	text-align: right;
 }
+
+a:link {color:#555;}
+a:visited {color:#555;}
+a:active {color:#555;}
+a:hover {color:#555;}
 
 #thumbs {
 	display: table;
@@ -84,6 +90,11 @@ div.description {
 	border:1px dashed #333;
 	margin:0px;
 	text-align:center;
+}
+
+div.copyright {
+	color: #555;
+	font-size: 20%;
 }
 
 </style>
@@ -198,10 +209,10 @@ $(window).trigger("hashchange");
 <img src="images/05.jpg"/>&nbsp;<img src="images/02.jpg"/>&nbsp;<img src="images/03.jpg"/>&nbsp;<img src="images/04.jpg"/>&nbsp;<img src="images/05.jpg"/>
 </div>
 <div class="menu">
-<a href="#portraits">Portreed</a>|<a href="#otherportraits">Teised portreed</a>|<a href="#main">Pea</a>
+<a href="#portraits">Portreed</a>&nbsp;|&nbsp;<a href="#otherportraits">Teised portreed</a>&nbsp;|&nbsp;<a href="#main">Esileht</a>
 </div>
 <div class="copyright">
-Copyright
+Fine print: Copyright Mart Oruaas, All Rights Reserved
 </div>
 </div> <!-- portraits -->
 
