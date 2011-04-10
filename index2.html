@@ -20,8 +20,9 @@ font-family: tahoma, verdana, georgia;
 	width:1060;
 	margin:0px auto; /* Right and left margin widths set to "auto" */
 	padding:20px;
-	border:1px dashed #333;
+	border:1px solid #333;
    	background-color:#eee;
+	border-radius: 4px;
 }
 
 div.menu {
@@ -87,14 +88,16 @@ div.thumb img {
 div.description {
 	display:table-cell;
 	vertical-align:top;
-	border:1px dashed #333;
-	margin:0px;
+	border:0px dashed #333;
+	padding-top:30px;
 	text-align:center;
+	line-height: 135%;
 }
 
 div.copyright {
 	color: #555;
 	font-size: 20%;
+	padding-top: 10px;
 }
 
 </style>
@@ -156,6 +159,18 @@ $('.shuffle').randomImage();
 
 $(window).trigger("hashchange");
 
+var savedimage;
+
+$('#portraits').hover(
+	function(){
+		savedimage=$('#img1').attr("src")
+		$('#img1').attr('src', 'images/01.jpg');
+	},
+	function(){
+		$('#img1').attr('src', savedimage);
+	}
+);
+
 });
 
 
@@ -168,7 +183,7 @@ $(window).trigger("hashchange");
 <div id="thumbs" class="pages">
 	<div id="upperrow">
 		<div class="thumb">
-			<img class="shuffle" src="" alt=""/>
+			<img id="img1" class="shuffle" src="" alt=""/>
 		</div>
 		<div class="thumb">
 			<img class="shuffle" src="" alt=""/>
@@ -187,14 +202,13 @@ $(window).trigger("hashchange");
 		</div>
 
 		<div class="description">
-<p class="name">Mart Oruaas</p>
-<p class="name">Mart Oruaas</p>
-<p class="name">Mart Oruaas</p>
-<p class="name">Mart Oruaas</p>
-<p class="profile">Teen pilti / Pretty pictures</p>
-<p class="contact">fazz &auml;t pobox punkt com</p>
-<a href="#portraits" id="link1">link1</a>
-<a href="#2" id="link2">link2</a>
+			<p class="name">Mart Oruaas</p>
+			<p class="profile">Teen pilti / Pretty pictures</p>
+			<p class="contact">fazz &auml;t pobox punkt com</p>
+			<a href="#portraits" id="portfolio">Portfolio</a>&nbsp;|&nbsp;
+			<a href="#about" id="about">Mis v&auml;rk on?</a><br/>
+			<a href="http://miljonsinistkassi.tumblr.com/" id="blog">Blog</a>&nbsp;|&nbsp;
+			<a href="http://www.flickr.com/photos/fazz/" id="flickr">Flickr</a>
 		</div>
 
 	</div> <!-- lowerrow -->
@@ -211,10 +225,11 @@ $(window).trigger("hashchange");
 <div class="menu">
 <a href="#portraits">Portreed</a>&nbsp;|&nbsp;<a href="#otherportraits">Teised portreed</a>&nbsp;|&nbsp;<a href="#main">Esileht</a>
 </div>
+</div> <!-- portraits -->
+
 <div class="copyright">
 Fine print: Copyright Mart Oruaas, All Rights Reserved
 </div>
-</div> <!-- portraits -->
 
 </div> <!-- content -->
 
