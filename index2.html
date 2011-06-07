@@ -26,8 +26,9 @@ font-family: tahoma, verdana, georgia;
 }
 
 div.menu {
-	margin-top: 10px;
-	text-align: right;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	text-align: left;
 }
 
 a:link {color:#555;}
@@ -89,9 +90,19 @@ div.description {
 	display:table-cell;
 	vertical-align:top;
 	border:0px dashed #333;
-	padding-top:30px;
+	xpadding-top:30px;
 	text-align:center;
 	line-height: 135%;
+}
+
+div.description_content {
+	vertical-align:top;
+	border:1px dashed #333;
+	padding-top:30px;
+	padding-bottom:60px;
+	text-align:center;
+	line-height: 135%;
+	margin: 20px;
 }
 
 div#copyright {
@@ -101,7 +112,8 @@ div#copyright {
 }
 
 div#imagestripheader {
-	padding-top: 10px;
+	padding-top: 15px;
+	padding-bottom: 20px;
 }
 
 </style>
@@ -138,20 +150,43 @@ div#imagestripheader {
 	
 })(jQuery);
 
+function pad(number, length) {
+    var str = '' + number;
+	while (str.length < length) {
+		str = '0' + str;
+	}
+    return str;
+}
+
 $(window).bind('hashchange', function () {
-	var pages = $('div.pages');
-	pages.hide();
+	$('div.pages').hide();
+	$('.imagestrip').hide();
+
+	var imagestrips = ['#portraits', '#otherportraits'];
+	var imagestrips_counts = [5, 4];
 
 	var hash = window.location.hash || '#main';
+
+	var s;
+	for (s in imagestrips) {
+		if (hash == imagestrips[s]) {
+			$('#imagestrips').show('');
+
+			var count = imagestrips_counts[s];
+			var imagerow = "";
+			while (count) {
+				imagerow += "<img src=\"images/"+pad(count, 2)+".jpg\">&nbsp;";
+				count--;
+			}
+
+			$(imagestrips[s]).html(imagerow);
+			$(imagestrips[s]).show();
+		}
+	}
+
 	if (hash == '#portraits') {
-		$('#imagestrips').show('');
-		$('#portraits').show('');
-		$('#otherportraits').hide();
 		$('#imagestripheader').text('Portraits');
 	} else if (hash == '#otherportraits') {
-		$('#imagestrips').show('');
-		$('#otherportraits').show('');
-		$('#portraits').hide();
 		$('#imagestripheader').text('OtherPortraits');
 	} else if (hash == '#about') {
 		$('#about').show('');
@@ -179,6 +214,26 @@ $('#portfolio').hover(
 	}
 );
 
+$('#blog').hover(
+	function(){
+		savedimage=$('#img1').attr("src")
+		$('#img1').attr('src', 'images/02.jpg');
+	},
+	function(){
+		$('#img1').attr('src', savedimage);
+	}
+);
+
+$('#flickr').hover(
+	function(){
+		savedimage=$('#img1').attr("src")
+		$('#img1').attr('src', 'images/03.jpg');
+	},
+	function(){
+		$('#img1').attr('src', savedimage);
+	}
+);
+
 });
 
 
@@ -190,12 +245,22 @@ $('#portfolio').hover(
 
 <div id="thumbs" class="pages">
 	<div id="upperrow">
+		<div class="description">
+		<div class="description_content">
+			<p class="name">Mart Oruaas</p>
+			<p class="profile">Teen pilti / Pretty pictures</p>
+			<p class="contact">e-post: fazz@pobox.com</p>
+			<a href="#portraits" id="portfolio">Portfolio</a>&nbsp;|&nbsp;
+			<a href="#about" id="aboutpage">Mis v&auml;rk on?</a><br/>
+			<a href="http://miljonsinistkassi.tumblr.com/" id="blog">Blog</a>&nbsp;|&nbsp;
+			<a href="http://www.flickr.com/photos/fazz/" id="flickr">Flickr</a>
+		</div>
+		</div>
+
 		<div class="thumb">
 			<img id="img1" class="shuffle" src="" alt=""/>
 		</div>
-		<div class="thumb">
-			<img class="shuffle" src="" alt=""/>
-		</div>
+
 		<div class="rightimage">
 			<img class="shuffle" src="" alt=""/>
 		</div>
@@ -209,14 +274,8 @@ $('#portfolio').hover(
 			<img class="shuffle" src="" alt=""/>
 		</div>
 
-		<div class="description">
-			<p class="name">Mart Oruaas</p>
-			<p class="profile">Teen pilti / Pretty pictures</p>
-			<p class="contact">e-post: fazz@pobox.com</p>
-			<a href="#portraits" id="portfolio">Portfolio</a>&nbsp;|&nbsp;
-			<a href="#about" id="aboutpage">Mis v&auml;rk on?</a><br/>
-			<a href="http://miljonsinistkassi.tumblr.com/" id="blog">Blog</a>&nbsp;|&nbsp;
-			<a href="http://www.flickr.com/photos/fazz/" id="flickr">Flickr</a>
+		<div class="rightimage">
+			<img class="shuffle" src="" alt=""/>
 		</div>
 
 	</div> <!-- lowerrow -->
@@ -224,16 +283,14 @@ $('#portfolio').hover(
 </div> <!-- thumbs -->
 
 <div id="imagestrips" class="pages">
-<div id="portraits" class="imagestrip">
-<img src="images/01.jpg"/>&nbsp;<img src="images/02.jpg"/>&nbsp;<img src="images/03.jpg"/>&nbsp;<img src="images/04.jpg"/>&nbsp;<img src="images/05.jpg"/>
-</div>
-<div id="otherportraits" class="imagestrip">
-<img src="images/05.jpg"/>&nbsp;<img src="images/02.jpg"/>&nbsp;<img src="images/03.jpg"/>&nbsp;<img src="images/04.jpg"/>&nbsp;<img src="images/05.jpg"/>
-</div>
-<div id="imagestripheader">
-</div>
 <div class="menu">
 <a href="#portraits">Portreed</a>&nbsp;|&nbsp;<a href="#otherportraits">Teised portreed</a>&nbsp;|&nbsp;<a href="#main">Esileht</a>
+</div>
+<div id="portraits" class="imagestrip">
+</div>
+<div id="otherportraits" class="imagestrip">
+</div>
+<div id="imagestripheader">
 </div>
 </div> <!-- imagestrips -->
 
