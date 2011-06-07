@@ -94,9 +94,13 @@ div.description {
 	line-height: 135%;
 }
 
-div.copyright {
+div#copyright {
 	color: #555;
 	font-size: 20%;
+	padding-top: 10px;
+}
+
+div#imagestripheader {
 	padding-top: 10px;
 }
 
@@ -141,14 +145,18 @@ $(window).bind('hashchange', function () {
 	var hash = window.location.hash || '#main';
 	if (hash == '#portraits') {
 		$('#imagestrips').show('');
-		$('#portraits').show('fast');
+		$('#portraits').show('');
 		$('#otherportraits').hide();
+		$('#imagestripheader').text('Portraits');
 	} else if (hash == '#otherportraits') {
 		$('#imagestrips').show('');
-		$('#otherportraits').show('fast');
+		$('#otherportraits').show('');
 		$('#portraits').hide();
+		$('#imagestripheader').text('OtherPortraits');
+	} else if (hash == '#about') {
+		$('#about').show('');
 	} else {
-		$('#thumbs').show('fast');
+		$('#thumbs').show('');
 	};
 });
 			    
@@ -204,9 +212,9 @@ $('#portfolio').hover(
 		<div class="description">
 			<p class="name">Mart Oruaas</p>
 			<p class="profile">Teen pilti / Pretty pictures</p>
-			<p class="contact">fazz &auml;t pobox punkt com</p>
+			<p class="contact">e-post: fazz@pobox.com</p>
 			<a href="#portraits" id="portfolio">Portfolio</a>&nbsp;|&nbsp;
-			<a href="#about" id="about">Mis v&auml;rk on?</a><br/>
+			<a href="#about" id="aboutpage">Mis v&auml;rk on?</a><br/>
 			<a href="http://miljonsinistkassi.tumblr.com/" id="blog">Blog</a>&nbsp;|&nbsp;
 			<a href="http://www.flickr.com/photos/fazz/" id="flickr">Flickr</a>
 		</div>
@@ -222,12 +230,23 @@ $('#portfolio').hover(
 <div id="otherportraits" class="imagestrip">
 <img src="images/05.jpg"/>&nbsp;<img src="images/02.jpg"/>&nbsp;<img src="images/03.jpg"/>&nbsp;<img src="images/04.jpg"/>&nbsp;<img src="images/05.jpg"/>
 </div>
+<div id="imagestripheader">
+</div>
 <div class="menu">
 <a href="#portraits">Portreed</a>&nbsp;|&nbsp;<a href="#otherportraits">Teised portreed</a>&nbsp;|&nbsp;<a href="#main">Esileht</a>
 </div>
-</div> <!-- portraits -->
+</div> <!-- imagestrips -->
 
-<div class="copyright">
+<div id="about" class="pages">
+Pilt peab olema....
+<br>
+Kontakt: ....
+<br>
+<a href="#main">Esileht</a>
+<br>
+</div> <!-- about -->
+
+<div id="copyright">
 Fine print: Copyright Mart Oruaas, All Rights Reserved.
 </div>
 
