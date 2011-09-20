@@ -137,7 +137,7 @@ div#imagestripheader {
 				var randomNumber = Math.random();
 				var lotteryNumber = Math.floor(randomNumber*imageNamesSize);
 				var winnerImage = imageNames[lotteryNumber];
-				var fullPath = 'images/' + winnerImage;
+				var fullPath = 'http://foto.salajane.info/images/main/' + winnerImage;
 				$(this).attr( {
 					src: fullPath,
 					alt: winnerImage
@@ -162,25 +162,25 @@ $(window).bind('hashchange', function () {
 	$('div.pages').hide();
 	$('.imagestrip').hide();
 
-	var imagestrips = ['#portraits', '#otherportraits'];
-	var imagestrips_counts = [5, 4];
+	var imagestrips = ['portraits', 'otherportraits'];
+	var imagestrips_counts = [5, 2];
 
 	var hash = window.location.hash || '#main';
 
 	var s;
 	for (s in imagestrips) {
-		if (hash == imagestrips[s]) {
+		if (hash == "#"+imagestrips[s]) {
 			$('#imagestrips').show('');
 
 			var count = imagestrips_counts[s];
 			var imagerow = "";
 			while (count) {
-				imagerow += "<img src=\"images/"+pad(count, 2)+".jpg\">&nbsp;";
+				imagerow += "<img src=\"http://foto.salajane.info/images/"+imagestrips[s]+"/"+pad(count, 2)+".jpg\">&nbsp;";
 				count--;
 			}
 
-			$(imagestrips[s]).html(imagerow);
-			$(imagestrips[s]).show();
+			$("#"+imagestrips[s]).html(imagerow);
+			$("#"+imagestrips[s]).show();
 		}
 	}
 
@@ -207,7 +207,7 @@ var savedimage;
 $('#portfolio').hover(
 	function(){
 		savedimage=$('#img1').attr("src")
-		$('#img1').attr('src', 'images/01.jpg');
+		$('#img1').attr('src', 'http://foto.salajane.info/images/main/01.jpg');
 	},
 	function(){
 		$('#img1').attr('src', savedimage);
@@ -217,7 +217,7 @@ $('#portfolio').hover(
 $('#blog').hover(
 	function(){
 		savedimage=$('#img3').attr("src")
-		$('#img3').attr('src', 'images/02.jpg');
+		$('#img3').attr('src', 'http://foto.salajane.info/images/main/02.jpg');
 	},
 	function(){
 		$('#img3').attr('src', savedimage);
@@ -227,7 +227,7 @@ $('#blog').hover(
 $('#flickr').hover(
 	function(){
 		savedimage=$('#img5').attr("src")
-		$('#img5').attr('src', 'images/03.jpg');
+		$('#img5').attr('src', 'http://foto.salajane.info/images/main/03.jpg');
 	},
 	function(){
 		$('#img5').attr('src', savedimage);
