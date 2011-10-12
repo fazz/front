@@ -13,7 +13,8 @@
 <style type="text/css">
 
 body {
-font-family: tahoma, verdana, georgia;
+	font-family: Tahoma, verdana, georgia;
+	font-size:80%;
 }
 
 #content {
@@ -26,9 +27,10 @@ font-family: tahoma, verdana, georgia;
 }
 
 div.menu {
-	margin-top: 20px;
-	margin-bottom: 50px;
+	margin-top: 0px;
+	margin-bottom: 20px;
 	text-align: left;
+	text-transform:uppercase;
 }
 
 a:link {color:#555;}
@@ -64,7 +66,8 @@ p {
 
 p.name {
 	font-size:120%;
-	font-weight:bold;
+	font-weight:600;
+	line-height: 150%;
 }
 
 p.contact {
@@ -90,30 +93,25 @@ div.description {
 	display:table-cell;
 	vertical-align:top;
 	border:0px dashed #333;
-	xpadding-top:30px;
-	text-align:center;
 	line-height: 135%;
 }
 
 div.description_content {
 	vertical-align:top;
-	border:1px dashed #333;
+	border:0px dashed #333;
 	padding-top:30px;
-	padding-bottom:60px;
-	text-align:center;
+	padding-bottom:90px;
+	padding-right:20px;
+	text-align:right;
 	line-height: 135%;
 	margin: 20px;
+	text-transform:uppercase;
 }
 
 div#copyright {
 	color: #555;
 	font-size: 20%;
 	padding-top: 10px;
-}
-
-div#imagestripheader {
-	padding-top: 15px;
-	padding-bottom: 20px;
 }
 
 </style>
@@ -126,7 +124,7 @@ div#imagestripheader {
 	
 	$.fn.randomImage = function()
 	{
-			var imageCount = 5;
+			var imageCount = 7;
 			var imageNames = [ ];
 			while (imageCount>0) {
 				imageNames.push((imageCount < 10 ? "0" : "") + imageCount + ".jpg");
@@ -185,9 +183,7 @@ $(window).bind('hashchange', function () {
 	}
 
 	if (hash == '#portraits') {
-		$('#imagestripheader').text('Portraits');
 	} else if (hash == '#otherportraits') {
-		$('#imagestripheader').text('OtherPortraits');
 	} else if (hash == '#about') {
 		$('#about').show('');
 	} else {
@@ -204,7 +200,7 @@ $(window).trigger("hashchange");
 
 var savedimage;
 
-$('#portfolio').hover(
+$('.portfolio').hover(
 	function(){
 		savedimage=$('#img1').attr("src")
 		$('#img1').attr('src', 'http://foto.salajane.info/images/main/01.jpg');
@@ -250,8 +246,9 @@ $('#flickr').hover(
 			<p class="name">Mart Oruaas</p>
 			<p class="profile">Teen pilti / Pretty pictures</p>
 			<p class="contact">e-post: fazz@pobox.com</p>
-			<a href="#portraits" id="portfolio">Portfolio</a>&nbsp;|&nbsp;
-			<a href="#about" id="aboutpage">Mis v&auml;rk on?</a><br/>
+			<a href="#portraits" class="portfolio">Portreed</a>&nbsp;|&nbsp;
+			<a href="#otherportraits" class="portfolio">Teised portreed</a><br/>
+			<a href="#about" id="aboutpage">Mis v&auml;rk on?</a>&nbsp;|&nbsp;
 			<a href="http://miljonsinistkassi.tumblr.com/" id="blog">Blog</a>&nbsp;|&nbsp;
 			<a href="http://www.flickr.com/photos/fazz/" id="flickr">Flickr</a>
 		</div>
@@ -289,8 +286,6 @@ $('#flickr').hover(
 <div id="portraits" class="imagestrip">
 </div>
 <div id="otherportraits" class="imagestrip">
-</div>
-<div id="imagestripheader">
 </div>
 </div> <!-- imagestrips -->
 
